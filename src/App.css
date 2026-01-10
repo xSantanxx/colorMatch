@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+svg:hover{
+    fill: yellow;
+}

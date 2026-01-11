@@ -78,18 +78,18 @@ function App() {
             })
         }
 
-        // useEffect(() => {
-        //     const controls = animate(count, 100, {duration: 5});
-        //
-        //     controls.then(() => {
-        //         setTimeout(() => {
-        //             setVisible(!visible);
-        //             setCountDown(true);
-        //         }, 150)
-        //     })
-        //
-        //     return () => controls.stop()
-        // }, [])
+        useEffect(() => {
+            const controls = animate(count, 100, {duration: 5});
+
+            controls.then(() => {
+                setTimeout(() => {
+                    setVisible(!visible);
+                    setCountDown(true);
+                }, 150)
+            })
+
+            return () => controls.stop()
+        }, [])
 
 
     useEffect(() => {
@@ -197,16 +197,11 @@ function App() {
             setLoading(false);
         }
 
-        useEffect(() => {
-            setVisible(!visible);
-        }, [])
+        // useEffect(() => {
+        //     setVisible(!visible);
+        // }, [])
 
         useEffect( () => {
-
-            // if(!countDown){
-            //     return;
-            // }
-
             getInfo();
         }, []);
 
@@ -360,10 +355,10 @@ function App() {
         return (
             <>
             <div className={'flex justify-center w-full'}>
-                {/*<motion.pre animate={{opacity: countDown ? 0 : 1}} transition={{duration: 0.5}} className={`text-4xl flex justify-center items-center text-purple-200 h-dvh fixed inset-0 z-100 pointer-events-none`}>{rounded}</motion.pre>*/}
-                <div className={`${!visible ? 'hidden' : ''} min-w-1/5 max-w-full rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center shadow-2xl backdrop-blur-md h-1/2 bg-white/10`}>
+                <motion.pre animate={{opacity: countDown ? 0 : 1}} transition={{duration: 0.5}} className={`text-4xl flex justify-center items-center text-purple-200 h-dvh fixed inset-0 z-100 pointer-events-none`}>{rounded}</motion.pre>
+                <div className={`${!visible ? 'hidden' : ''} min-w-1/5 max-w-full rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center sm:shadow-2xl sm:backdrop-blur-md h-1/2 bg-white/10`}>
                     {/*Sign Up Sheet*/}
-                    <h1 className={'text-lg text-shadow-2xs'}>Sign Up</h1>
+                    <h1 className={'text-lg sm:text-shadow-2xs'}>Sign Up</h1>
                     <form className={'flex flex-col'} onSubmit={signUp}>
                         <input className={'border rounded-sm m-4'} type='text' placeholder={'First Name'} onChange={(e) => setFirstName(e.target.value)}></input>
                         <input className={'border rounded-sm m-4'} type='email' placeholder={'Email'} onChange={(e) => setEmail(e.target.value)}></input>
@@ -376,7 +371,7 @@ function App() {
                     </form>
                 </div>
                 {/*Login Sheet*/}
-                <div className={`${!accExist ? 'hidden' : ''} rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center backdrop-blur-md shadow-2xl min-w-1/4 max-w-full h-1/2 bg-white/10`}>
+                <div className={`${!accExist ? 'hidden' : ''} rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center sm:backdrop-blur-md sm:shadow-2xl min-w-1/4 max-w-full h-1/2 bg-white/10`}>
                     <h1 className={'text-lg'}>Login</h1>
                     <form className={'flex flex-col'} onSubmit={signIn}>
                         <input className={'border-2 rounded-sm m-4'} type='email' placeholder={'Email'} onChange={(e) => setEmail(e.target.value)}></input>
@@ -394,7 +389,7 @@ function App() {
                 </div>
                 {/*Favorites*/}
                 <div> {session ? <div className={`absolute top-10 right-0 mr-2 mt-2 border max-w-fit px-2 rounded-full hover:bg-green-300 opacity-25 transition-all duration-300 hover:opacity-95 active:opacity-100`}><button className={'opacity-25 hover:opacity-95 cursor-pointer active:opacity-100'} onClick={() => setShowFavorite(!showFavorite)}>{session.user.user_metadata.first_name}</button></div> : <p className={'absolute top-10 right-0 mr-2 mt-2 border max-w-fit opacity-25 hover:opacity-95 cursor-pointer rounded-2xl p-0.5 active:opacity-100'}>Please Login</p> }</div>
-                <div className={`${showFavorite ? 'opacity-95' : 'hidden'} overflow-auto opacity-0 absolute top-18 right-0 mr-2 mt-2 text-center h-3/4 w-1/4 z-10 bg-white/10 backdrop-blur-md rounded-2xl transition-all`}><h1 className={'bg-slate-200 text-xl'}>Favorites</h1>
+                <div className={`${showFavorite ? 'opacity-95' : 'hidden'} overflow-auto opacity-0 absolute top-18 right-0 mr-2 mt-2 text-center h-3/4 w-1/4 z-10 bg-white/10 sm:backdrop-blur-md rounded-2xl transition-all`}><h1 className={'bg-slate-200 text-xl'}>Favorites</h1>
                 <div className={''}>
                     {catalog.filter((key) =>  star.includes(key.id)).map((key) => (
                         <div key={key.id} className={'w-30 flex flex-col my-2 ml-2'}>
@@ -409,7 +404,7 @@ function App() {
                 {/*Gallery*/}
                 <div className={`${!cColl ? 'hidden' : ''} transition duration-300 grid grid-cols-2 gap-2 max-w-3/4 p-2 h-screen overflow-auto`}>
                     {catalog.map((key) => (
-                        <div onClick={() => focusDiv(key.id)} key={key.id} className={`${key.id === id ? 'z-40 m-auto inset-0 opacity-100 bg-white/50 backdrop-blur-2xl absolute col-span-2 h-124 w-90' : ''} hover:opacity-100 bg-white/50 backdrop-blur-2xl max-h-fit max-w-130 opacity-75 cursor-pointer border-4 border-transparent hover:border-(--hover-color) hover:shadow-[0_0_15px_var(--hover-color)] p-1 rounded-lg flex flex-col transition-all duration-300 hover:-translate-y-2`}
+                        <div onClick={() => focusDiv(key.id)} key={key.id} className={`${key.id === id ? 'z-40 m-auto inset-0 opacity-100 bg-white/50 sm:backdrop-blur-2xl absolute col-span-2 h-124 w-90' : ''} hover:opacity-100 bg-white/50 sm:backdrop-blur-2xl max-h-fit max-w-130 opacity-75 cursor-pointer border-4 border-transparent hover:border-(--hover-color) hover:shadow-[0_0_15px_var(--hover-color)] p-1 rounded-lg flex flex-col transition-all duration-300 hover:-translate-y-2`}
                         style={{'--hover-color': `hsl(${key.hue}, ${key.saturation}%, ${key.lightness}%)`}}>
                             <button onClick={unFocusDiv} className={`${key.id === id ? '' : 'hidden'} hover:outline-solid cursor-pointer absolute top-0 left-0 rounded-full text-center w-3 h-3 mb-1 bg-red-500`}></button>
                             <img loading={'lazy'} decoding={'async'} className={`${key.id === id ? 'h-83' : ''} object-contain max-h-120 max-w-full cursor-pointer`} src={`${key.image_url}`}  />
@@ -437,14 +432,14 @@ function App() {
                     <ToastContainer></ToastContainer>
                 </div>
                 <motion.div layout transition={{duration: 2, type: "spring", stiffness: 50}}
-                            className={`${!main ? 'hidden' : ''} relative border border-white/20 bg-white/30 backdrop-blur-md h-125 min-w-97 max-w-full shadow-lg overflow-auto rounded-md`}>
+                            className={`${!main ? 'hidden' : ''} relative border border-white/20 bg-white/30 sm:backdrop-blur-md h-125 min-w-97 max-w-full shadow-lg overflow-auto rounded-md`}>
                     <h1 className={'text-2xl text-center'}>Add Your Clothing</h1>
                     <div>{session ?
                         <button onClick={loadColl} className={'cursor-pointer p-1 hover:rounded-2xl hover:bg-pink-300/50'}>Profile: {session.user.user_metadata.first_name}</button> : <p>Guest</p>}</div>
                     <div className={`${showHistory ? 'opacity-100' : 'hidden'} rounded-2xl opacity-0 absolute transition duration-300 border max-w-fit max-h-100 overflow-auto text-center bg-slate-200 z-60`}>
                         <h1>Collection</h1>
                         {catalog.filter((key) =>  key.first_name === session.user.user_metadata.first_name).map((key) => (
-                            <div key={key.id} className={'flex flex-col overflow-auto bg-cyan-50/80 backdrop-blur-2xl'}>
+                            <div key={key.id} className={'flex flex-col overflow-auto bg-cyan-50/80 sm:backdrop-blur-2xl'}>
                                 <img className={'max-w-55 m-1 object-contain'} src={`${key.image_url}`} />
                                 <label className={'text-lg'}>Category: {key.category}</label>
                                 <div className={'rounded-full flex items-center justify-center text-white mx-2'} style={{backgroundColor: `hsl(${key.hue}, ${key.saturation}%, ${key.lightness}%)`}}>{key.colorName}</div>
@@ -455,7 +450,7 @@ function App() {
                     {/*main image screen*/}
                     {imageUrl && (
                         <div className={'mt-10 flex items-center justify-center'}>
-                            <img ref={imgR} crossOrigin={'anonymous'} onLoad={imageLoad}  className={'top-20 w-65 border-2 rounded-sm max-w-2/4 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl'} src={URL.createObjectURL(imageUrl)}/>
+                            <img ref={imgR} crossOrigin={'anonymous'} onLoad={imageLoad}  className={'top-20 w-65 border-2 rounded-sm max-w-2/4 transition-all duration-300 hover:-translate-y-2 sm:hover:shadow-2xl'} src={URL.createObjectURL(imageUrl)}/>
                         </div>
                     )}
                     <div className={'flex items-center justify-center'}>
@@ -486,7 +481,7 @@ function App() {
                     </div>
                 </motion.div>
                 <div className={`${!main ? 'hidden' : ''} border-slate-100 w-1/3 h-1/2`}>
-                    <div className={`h-1/2 flex items-center justify-center shadow-md rounded-lg border-2`} style={{ backgroundColor: `hsl(${orgH}, ${orgS}%, ${orgL}%, ${alpha})`}}>
+                    <div className={`h-1/2 flex items-center justify-center sm:shadow-md rounded-lg border-2`} style={{ backgroundColor: `hsl(${orgH}, ${orgS}%, ${orgL}%, ${alpha})`}}>
                     <button onClick={() => {copyClip(colorValue)}} className={`relative cursor-pointer duration-300 h-full w-full hover:opacity-100 opacity-0 transition-all`}>{colorValue}</button></div>
                     <div className={'h-1/2 flex items-center justify-center rounded-lg border-2'} style={{ backgroundColor: `hsl(${comH}, ${orgS}%, ${orgL}%, ${alpha})`}}><button onClick={() => {copyClip(comValue)}} className={'relative cursor-pointer duration-300 h-full w-full hover:opacity-100 opacity-0 transition-all'}>{comValue}</button></div>
                 </div>

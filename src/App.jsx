@@ -351,7 +351,7 @@ function App() {
             <>
             <div className={'flex justify-center w-full'}>
                 <motion.pre className={`${countDown ? 'hidden' : ''} text-4xl flex justify-center items-center text-purple-200 h-dvh`}>{rounded}</motion.pre>
-                <div className={`${!visible ? 'hidden' : ''} min-w-screen rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center shadow-2xl backdrop-blur-md h-1/2 bg-white/10`}>
+                <div className={`${!visible ? 'hidden' : ''} min-w-2/3 rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center shadow-2xl backdrop-blur-md h-1/2 bg-white/10`}>
                     {/*Sign Up Sheet*/}
                     <h1 className={'text-lg text-shadow-2xs'}>Sign Up</h1>
                     <form className={'flex flex-col'} onSubmit={signUp}>

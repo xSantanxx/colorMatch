@@ -433,7 +433,7 @@ function App() {
                         <button onClick={loadColl} className={'cursor-pointer p-1 hover:rounded-2xl hover:bg-pink-300/50'}>Profile: {session.user.user_metadata.first_name}</button> : <p>Guest</p>}</div>
                     <div className={`${showHistory ? 'opacity-100' : 'hidden'} rounded-2xl opacity-0 absolute transition duration-300 border max-w-fit max-h-100 overflow-auto text-center bg-slate-200 z-60`}>
                         <h1>Collection</h1>
-                        {catalog.map((key) => (
+                        {catalog.filter((key) =>  key.first_name === session.user.user_metadata.first_name).map((key) => (
                             <div key={key.id} className={'flex flex-col overflow-auto bg-cyan-50/80 backdrop-blur-2xl'}>
                                 <img className={'max-w-55 m-1 object-contain'} src={`${key.image_url}`} />
                                 <label className={'text-lg'}>Category: {key.category}</label>

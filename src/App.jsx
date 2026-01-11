@@ -257,6 +257,11 @@ function App() {
         }
 
         const imageLoad = () => {
+
+            if(color) {
+                return;
+            }
+
             const colorThief = new ColorThief();
             const img = imgR.current;
             const result = colorThief.getColor(img);

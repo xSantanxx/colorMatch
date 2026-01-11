@@ -199,8 +199,13 @@ function App() {
 
 
         useEffect( () => {
+
+            if(!countDown){
+                return;
+            }
+
             getInfo();
-        }, [])
+        }, [countDown]);
 
     const signInFailed = () => {
         toast.error("Please enter in the details", {

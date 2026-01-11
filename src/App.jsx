@@ -82,9 +82,10 @@ function App() {
             const controls = animate(count, 100, {duration: 5});
 
             controls.then(() => {
-                setVisible(!visible);
-                setCountDown(true);
-                alert('hey')
+                setTimeout(() => {
+                    setVisible(!visible);
+                    setCountDown(true);
+                }, 150)
             })
 
             return () => controls.stop()
@@ -351,7 +352,7 @@ function App() {
         return (
             <>
             <div className={'flex justify-center w-full'}>
-                <motion.pre className={`${countDown ? 'hidden' : ''} text-4xl flex justify-center items-center text-purple-200 h-dvh`}>{rounded}</motion.pre>
+                <motion.pre animate={{opacity: countDown ? 0 : 1}} transition={{duration: 0.5}} className={`text-4xl flex justify-center items-center text-purple-200 h-dvh fixed inset-0 z-100 pointer-events-none`}>{rounded}</motion.pre>
                 <div className={`${!visible ? 'hidden' : ''} min-w-1/5 max-w-full rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center shadow-2xl backdrop-blur-md h-1/2 bg-white/10`}>
                     {/*Sign Up Sheet*/}
                     <h1 className={'text-lg text-shadow-2xs'}>Sign Up</h1>

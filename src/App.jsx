@@ -351,7 +351,7 @@ function App() {
             <>
             <div className={'flex justify-center w-full'}>
                 <motion.pre className={`${countDown ? 'hidden' : ''} text-4xl flex justify-center items-center text-purple-200 h-dvh`}>{rounded}</motion.pre>
-                <div className={`${!visible ? 'hidden' : ''} rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center shadow-2xl backdrop-blur-md w-1/3 h-1/2 bg-white/10`}>
+                <div className={`${!visible ? 'hidden' : ''} min-w-1/5 rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center shadow-2xl backdrop-blur-md h-1/2 bg-white/10`}>
                     {/*Sign Up Sheet*/}
                     <h1 className={'text-lg text-shadow-2xs'}>Sign Up</h1>
                     <form className={'flex flex-col'} onSubmit={signUp}>
@@ -359,14 +359,14 @@ function App() {
                         <input className={'border rounded-sm m-4'} type='email' placeholder={'Email'} onChange={(e) => setEmail(e.target.value)}></input>
                         <input className={'border rounded-sm m-4'} type='password' placeholder={'Password'} onChange={(e) => setPassword(e.target.value)}></input>
                         <div>
-                            <button onClick={mainPageS} className={'cursor-pointer border-2 p-1 border-black text-white max-w-fit ml-4 mr-2 rounded-lg bg-red-500 hover:bg-green-500'} type='submit'>Create Account</button>
+                            <button onClick={mainPageS} className={'cursor-pointer border-2 p-1 border-black text-white max-w-fit ml-4 mr-2 rounded-lg bg-red-500 hover:bg-green-500'} type='submit'>Sign Up</button>
                             <button onClick={changeState} className={'cursor-pointer border-2 p-1 border-black text-white max-w-fit rounded-lg bg-red-500 hover:bg-green-500'} type='submit'>Sign In</button>
                             <button onClick={guestMode} className={'mx-2 cursor-pointer border-2 p-1 border-black text-white max-w-fit rounded-lg bg-red-500 hover:bg-green-500'} type='submit'>Login as Guest</button>
                         </div>
                     </form>
                 </div>
                 {/*Login Sheet*/}
-                <div className={`${!accExist ? 'hidden' : ''} rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center backdrop-blur-lg w-1/3 h-1/2 bg-white/50`}>
+                <div className={`${!accExist ? 'hidden' : ''} rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center backdrop-blur-md shadow-2xl min-w-1/4 h-1/2 bg-white/10`}>
                     <h1 className={'text-lg'}>Login</h1>
                     <form className={'flex flex-col'} onSubmit={signIn}>
                         <input className={'border-2 rounded-sm m-4'} type='email' placeholder={'Email'} onChange={(e) => setEmail(e.target.value)}></input>
@@ -397,7 +397,7 @@ function App() {
                     ))}
                 </div></div>
                 {/*Gallery*/}
-                <div className={`${!cColl ? 'hidden' : ''} transition duration-300 grid grid-cols-4 gap-2 max-w-3/4 p-2 h-screen overflow-auto`}>
+                <div className={`${!cColl ? 'hidden' : ''} transition duration-300 grid grid-cols-2 gap-2 max-w-3/4 p-2 h-screen overflow-auto`}>
                     {catalog.map((key) => (
                         <div onClick={() => focusDiv(key.id)} key={key.id} className={`${key.id === id ? 'z-40 m-auto inset-0 opacity-100 bg-white/50 backdrop-blur-2xl absolute col-span-2 h-124 w-90' : ''} hover:opacity-100 bg-white/50 backdrop-blur-2xl max-h-fit max-w-130 opacity-75 cursor-pointer border-4 border-transparent hover:border-(--hover-color) hover:shadow-[0_0_15px_var(--hover-color)] p-1 rounded-lg flex flex-col transition-all duration-300 hover:-translate-y-2`}
                         style={{'--hover-color': `hsl(${key.hue}, ${key.saturation}%, ${key.lightness}%)`}}>
@@ -427,7 +427,7 @@ function App() {
                     <ToastContainer></ToastContainer>
                 </div>
                 <motion.div layout transition={{duration: 2, type: "spring", stiffness: 50}}
-                            className={`${!main ? 'hidden' : ''} relative border border-white/20 bg-white/30 backdrop-blur-md h-125 w-3/4 shadow-lg overflow-auto rounded-md`}>
+                            className={`${!main ? 'hidden' : ''} relative border border-white/20 bg-white/30 backdrop-blur-md h-125 min-w-97 shadow-lg overflow-auto rounded-md`}>
                     <h1 className={'text-2xl text-center'}>Add Your Clothing</h1>
                     <div>{session ?
                         <button onClick={loadColl} className={'cursor-pointer p-1 hover:rounded-2xl hover:bg-pink-300/50'}>Profile: {session.user.user_metadata.first_name}</button> : <p>Guest</p>}</div>

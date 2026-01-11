@@ -407,7 +407,7 @@ function App() {
                     ))}
                 </div></div>
                 {/*Gallery*/}
-                <div className={`${!cColl ? 'hidden' : ''} transition duration-300 grid grid-cols-4 gap-2 max-w-3/4 p-2 h-screen overflow-auto`}>
+                <div className={`${!cColl ? 'hidden' : ''} transition duration-300 grid grid-cols-2 gap-2 max-w-3/4 p-2 h-screen overflow-auto`}>
                     {catalog.map((key) => (
                         <div onClick={() => focusDiv(key.id)} key={key.id} className={`${key.id === id ? 'z-40 m-auto inset-0 opacity-100 bg-white/50 backdrop-blur-2xl absolute col-span-2 h-124 w-90' : ''} hover:opacity-100 bg-white/50 backdrop-blur-2xl max-h-fit max-w-130 opacity-75 cursor-pointer border-4 border-transparent hover:border-(--hover-color) hover:shadow-[0_0_15px_var(--hover-color)] p-1 rounded-lg flex flex-col transition-all duration-300 hover:-translate-y-2`}
                         style={{'--hover-color': `hsl(${key.hue}, ${key.saturation}%, ${key.lightness}%)`}}>

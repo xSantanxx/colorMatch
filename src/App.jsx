@@ -84,6 +84,7 @@ function App() {
             controls.then(() => {
                 setVisible(!visible);
                 setCountDown(true);
+                alert('hey')
             })
 
             return () => controls.stop()

@@ -351,7 +351,7 @@ function App() {
             <>
             <div className={'flex justify-center w-full'}>
                 <motion.pre className={`${countDown ? 'hidden' : ''} text-4xl flex justify-center items-center text-purple-200 h-dvh`}>{rounded}</motion.pre>
-                <div className={`${!visible ? 'hidden' : ''} min-w-1/5 rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center shadow-2xl backdrop-blur-md h-1/2 bg-white/10`}>
+                <div className={`${!visible ? 'hidden' : ''} min-w-screen rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center shadow-2xl backdrop-blur-md h-1/2 bg-white/10`}>
                     {/*Sign Up Sheet*/}
                     <h1 className={'text-lg text-shadow-2xs'}>Sign Up</h1>
                     <form className={'flex flex-col'} onSubmit={signUp}>
@@ -366,7 +366,7 @@ function App() {
                     </form>
                 </div>
                 {/*Login Sheet*/}
-                <div className={`${!accExist ? 'hidden' : ''} rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center backdrop-blur-md shadow-2xl min-w-1/4 h-1/2 bg-white/10`}>
+                <div className={`${!accExist ? 'hidden' : ''} rounded-2xl z-10 mt-30 ml-auto mr-auto absolute flex flex-col justify-center items-center backdrop-blur-md shadow-2xl min-w-screen h-1/2 bg-white/10`}>
                     <h1 className={'text-lg'}>Login</h1>
                     <form className={'flex flex-col'} onSubmit={signIn}>
                         <input className={'border-2 rounded-sm m-4'} type='email' placeholder={'Email'} onChange={(e) => setEmail(e.target.value)}></input>
@@ -427,7 +427,7 @@ function App() {
                     <ToastContainer></ToastContainer>
                 </div>
                 <motion.div layout transition={{duration: 2, type: "spring", stiffness: 50}}
-                            className={`${!main ? 'hidden' : ''} relative border border-white/20 bg-white/30 backdrop-blur-md h-125 min-w-97 shadow-lg overflow-auto rounded-md`}>
+                            className={`${!main ? 'hidden' : ''} relative border border-white/20 bg-white/30 backdrop-blur-md h-125 min-w-2/3 shadow-lg overflow-auto rounded-md`}>
                     <h1 className={'text-2xl text-center'}>Add Your Clothing</h1>
                     <div>{session ?
                         <button onClick={loadColl} className={'cursor-pointer p-1 hover:rounded-2xl hover:bg-pink-300/50'}>Profile: {session.user.user_metadata.first_name}</button> : <p>Guest</p>}</div>
@@ -453,9 +453,9 @@ function App() {
                             setImageUrl(event.target.files[0]);
                             setFile(event.target.files[0]);
                         }} />
-                            <div className={'flex flex-row'}>
-                                <label className={'relative right-8 cursor-pointer duration-300 rounded-lg'} htmlFor={'files'}>Select Image</label>
-                                <button className={'relative right-4 cursor-pointer'} onClick={loadImg}>Load</button>
+                            <div className={'flex flex-row justify-center gap-2'}>
+                                <label className={'relative cursor-pointer duration-300 rounded-lg'} htmlFor={'files'}>Select Image</label>
+                                <button className={'relative cursor-pointer'} onClick={loadImg}>Load</button>
                                 <div className={'relative'}><button className={'cursor-pointer'} onClick={removal}>Remove</button></div>
                             </div>
                         <ToastContainer></ToastContainer>
@@ -475,7 +475,7 @@ function App() {
                         </form>
                     </div>
                 </motion.div>
-                <div className={`${!main ? 'hidden' : ''} border-slate-100 w-1/4 h-1/2`}>
+                <div className={`${!main ? 'hidden' : ''} border-slate-100 w-1/3 h-1/2`}>
                     <div className={`h-1/2 flex items-center justify-center shadow-md rounded-lg border-2`} style={{ backgroundColor: `hsl(${orgH}, ${orgS}%, ${orgL}%, ${alpha})`}}>
                     <button onClick={() => {copyClip(colorValue)}} className={`relative cursor-pointer duration-300 h-full w-full hover:opacity-100 opacity-0 transition-all`}>{colorValue}</button></div>
                     <div className={'h-1/2 flex items-center justify-center rounded-lg border-2'} style={{ backgroundColor: `hsl(${comH}, ${orgS}%, ${orgL}%, ${alpha})`}}><button onClick={() => {copyClip(comValue)}} className={'relative cursor-pointer duration-300 h-full w-full hover:opacity-100 opacity-0 transition-all'}>{comValue}</button></div>

@@ -190,6 +190,13 @@ export default function MainApp({ supabase, session }) {
                                 >
                                     {item.colorName}
                                 </div>
+
+                                <div
+                                    className="rounded-full flex items-center justify-center text-white text-[10px] py-1 px-2 shadow-md"
+                                    style={{ backgroundColor: `hsl(${item.comHue}, ${item.saturation}%, ${item.lightness}%)` }}
+                                >
+                                    {item.complementaryName}
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -212,12 +219,11 @@ export default function MainApp({ supabase, session }) {
             </div>
 
             <div className={`${!main ? 'hidden' : ''} relative border border-white/20 bg-white/30 h-125 min-w-97 max-w-full overflow-auto rounded-md p-4`}>
-
                 <div className="flex justify-between items-center">
                     {session ? (
                         <button
                             onClick={() => { setShowHistory(!showHistory); getInfo(); }}
-                            className="cursor-pointer p-1 hover:rounded-2xl hover:bg-pink-300/50 text-white"
+                            className="cursor-pointer p-1 hover:rounded-2xl hover:bg-pink-300 text-slate-500"
                         >
                             Profile: {session.user.user_metadata.first_name}
                         </button>
@@ -236,6 +242,13 @@ export default function MainApp({ supabase, session }) {
                                 style={{ backgroundColor: `hsl(${key.hue}, ${key.saturation}%, ${key.lightness}%)` }}
                             >
                                 {key.colorName}
+                            </div>
+
+                            <div
+                                className="rounded-full flex items-center justify-center text-white mx-2 py-1"
+                                style={{ backgroundColor: `hsl(${key.comHue}, ${key.saturation}%, ${key.lightness}%)` }}
+                            >
+                                {key.complementaryName}
                             </div>
                         </div>
                     ))}

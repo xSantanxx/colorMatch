@@ -9,7 +9,7 @@ import MainApp from "./mainApp.jsx";
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY);
 
 function App() {
-    const [stage, setStage] = useState('timer'); // timer -> auth -> main
+    const [stage, setStage] = useState('timer');
     const [session, setSession] = useState(null);
 
 

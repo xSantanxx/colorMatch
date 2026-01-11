@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import ColorThief from 'colorthief';
 import namer from "color-namer";
-import { colorCheck } from "./colorCheck.js"; // Your custom logic
+import { colorCheck } from "./colorCheck.js";
 import { toast } from "react-toastify";
 import './App.css'
 

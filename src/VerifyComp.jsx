@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {use, useEffect, useState} from "react";
 import { toast } from "react-toastify";
 import './App.css'
 
@@ -13,10 +13,16 @@ export default function VerifyComp({ supabase, onLogin }) {
         if (e) e.preventDefault();
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) {
-            toast.error("Please enter in the details");
-            setVisible(true);
+            toast.error(`${error.message}`);
         } else {
-            onLogin();
+            toast.success('Welcome back!', {
+                position: "top-right",
+                autoClose: 2000,
+            });
+
+            setTimeout(() => {
+                onLogin();
+            }, 500)
         }
     };
 
@@ -39,10 +45,19 @@ export default function VerifyComp({ supabase, onLogin }) {
         onLogin();
     };
 
-    const goBack = () => {
-        setVisible(true);
-        setAccExist(false);
-    }
+    useEffect(() => {
+        const textPrompt = () => {
+            toast.info("You must create an account to use any features", {
+                position: "top-right",
+                autoClose: 5000,
+            });
+        }
+
+        textPrompt();
+    }, [])
+
+
+
 
     return (
         <div className="flex justify-center w-full h-dvh bg-linear-to-bl from-blue-300/50 to-cyan-300/50">
@@ -74,7 +89,7 @@ export default function VerifyComp({ supabase, onLogin }) {
                     <input className="border-2 rounded-sm m-4 p-1 bg-white text-black" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                     <input className="border-2 rounded-sm m-4 p-1 bg-white text-black" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     <div className="flex justify-center">
-                        <button onClick={goBack} className="cursor-pointer border-2 p-1 border-black text-white w-25 rounded-lg bg-red-500 hover:bg-green-500 mr-2" type="button">
+                        <button onClick={() => {setAccExist(false); setVisible(!visible);}} className="cursor-pointer border-2 p-1 border-black text-white w-25 rounded-lg bg-red-500 hover:bg-green-500 mr-2" type="button">
                             Back
                         </button>
                         <button className="cursor-pointer border-2 p-1 border-black text-white w-25 rounded-lg bg-red-500 hover:bg-green-500" type="submit">

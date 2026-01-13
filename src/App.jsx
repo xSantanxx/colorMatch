@@ -12,6 +12,10 @@ function App() {
     const [stage, setStage] = useState('timer');
     const [session, setSession] = useState(null);
 
+    useEffect(() => {
+        localStorage.clear()
+    }, []);
+
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
